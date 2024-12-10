@@ -12,7 +12,12 @@ export const FilterDropdown = ({
   return (
     <FormControl>
       <FormLabel>{label}:</FormLabel>
-      <Select onChange={e => onFilter(e.target.value)} size="lg">
+      <Select
+        onChange={e => onFilter(e.target.value)}
+        size="lg"
+        colorScheme="blue"
+        variant="filled"
+      >
         <option value="">All</option>
         {options.map(option => (
           <option key={option} value={option}>

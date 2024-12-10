@@ -5,15 +5,33 @@ const config: ThemeConfig = {
   useSystemColorMode: false,
 };
 
+const sharedStyles = {
+  w: 'full',
+  maxW: '1200px',
+  mx: 'auto',
+};
+
 const customTheme = extendTheme({
   config,
   styles: {
     global: (props: { colorMode: string }) => ({
       body: {
-        fontFamily: 'body',
-        color: props.colorMode === 'light' ? 'customGreen.800' : 'white',
-        bg: props.colorMode === 'light' ? 'customGreen.200' : 'customGreen.900',
-        lineHeight: 'base',
+        bg: props.colorMode === 'light' ? 'customGreen.200' : 'mint.800',
+      },
+      '::-webkit-scrollbar': {
+        width: '10px',
+        height: '10px',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: props.colorMode === 'light' ? 'green.200' : 'mint.600',
+        borderRadius: '5px',
+      },
+      '::-webkit-scrollbar-thumb:hover': {
+        background: props.colorMode === 'light' ? 'green.300' : 'mint.700',
+      },
+      '::-webkit-scrollbar-track': {
+        background:
+          props.colorMode === 'light' ? 'customGreen.200' : 'mint.800',
       },
     }),
   },
@@ -44,16 +62,26 @@ const customTheme = extendTheme({
     },
   },
   components: {
+    nav: {
+      baseStyle: {
+        ...sharedStyles,
+      },
+    },
     main: {
       baseStyle: {
-        w: 'full',
-        maxW: '1200px',
-        mx: 'auto',
+        ...sharedStyles,
         flexGrow: 1,
-        bg: 'customGreen.100',
-        color: 'mint.800',
         _dark: {
           bg: 'mint.900',
+          color: 'white',
+        },
+      },
+    },
+    header: {
+      baseStyle: {
+        bg: 'green.200',
+        _dark: {
+          bg: 'mint.700',
           color: 'white',
         },
       },

@@ -1,5 +1,11 @@
 import type { Country } from '@/shared/types/countryTypes';
-import { Flex, Skeleton, Text, useStyleConfig } from '@chakra-ui/react';
+import {
+  Flex,
+  Skeleton,
+  Text,
+  useColorMode,
+  useStyleConfig,
+} from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import {
@@ -15,7 +21,7 @@ import { Navbar } from './Navbar/Navbar';
 
 export const Router: React.FC = () => {
   const styles = useStyleConfig('main');
-
+  const { colorMode } = useColorMode();
   const {
     data: countries,
     isLoading,
@@ -50,7 +56,12 @@ export const Router: React.FC = () => {
   return (
     <Flex flexDir="column" h="100vh" justifyContent="space-between">
       <Navbar />
-      <Flex sx={styles} overflow="auto" p={4}>
+      <Flex
+        sx={styles}
+        overflow="auto"
+        p={4}
+        boxShadow="0px 4px 6px rgba(0, 0, 0, 0.1)"
+      >
         <Routes>
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Dashboard />} />
@@ -64,7 +75,11 @@ export const Router: React.FC = () => {
           <Route path="/new" element={<New />} />
         </Routes>
       </Flex>
-      <Flex bg="mint.800" p={4} justify="center">
+      <Flex
+        bg={colorMode === 'light' ? 'green.200' : 'mint.700'}
+        p={4}
+        justify="center"
+      >
         footer
       </Flex>
     </Flex>

@@ -24,11 +24,13 @@ export const SortDropdown: React.FC<SortDropdownProps> = ({
       <FormLabel htmlFor={dropdownId}>{label}</FormLabel>
       <Select
         id={dropdownId}
+        size="lg"
+        colorScheme="green"
+        variant="filled"
         onChange={e => {
           const [key, direction] = e.target.value.split('-');
           onSort(key, direction as 'asc' | 'desc');
         }}
-        className="sort-dropdown"
       >
         {options.map(option => (
           <option key={option.value} value={option.value}>

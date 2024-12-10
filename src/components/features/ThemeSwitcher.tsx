@@ -8,9 +8,8 @@ export const ThemeSwitcher = () => {
     <IconButton
       aria-label="Toggle theme"
       icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-      color={colorMode === 'light' ? 'gray' : 'cyan'}
       onClick={toggleColorMode}
-      variant="ghost"
+      colorScheme="green"
     />
   );
 };

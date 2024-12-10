@@ -21,12 +21,14 @@ export const CountryCard: React.FC<CountryCardProps> = ({
   const capitalCity = capital?.[0] || null;
 
   return (
-    <Card>
+    <Card p={4}>
       <Box>
-        <Heading>{name.common}</Heading>
+        <Heading size="sm" mb={2}>
+          {name.common}
+        </Heading>
         <Flex>
           {flag ? (
-            <Image src={flag} alt={`${name.common} flag`} />
+            <Image src={flag} alt={`${name.common} flag`} maxW="200px" />
           ) : (
             <Text>No flag available</Text>
           )}
