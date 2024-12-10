@@ -1,3 +1,4 @@
+import { Flex } from '@chakra-ui/react';
 import React from 'react';
 
 type FeatureProps = {
@@ -6,8 +7,8 @@ type FeatureProps = {
 
 export const Feature: React.FC<FeatureProps> = ({ message }) => {
   return (
-    <div className="empty-state">
-      <p>{message}</p>
-    </div>
+    <Flex>
+      {message}
+    </Flex>
   );
 };

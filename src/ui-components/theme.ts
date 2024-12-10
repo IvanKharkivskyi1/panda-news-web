@@ -1,15 +1,21 @@
-import { extendTheme } from '@chakra-ui/react';
+import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+
+const config: ThemeConfig = {
+  initialColorMode: 'light',
+  useSystemColorMode: false,
+};
 
 const customTheme = extendTheme({
+  config,
   styles: {
-    global: {
+    global: (props: { colorMode: string }) => ({
       body: {
-        fontFamily: 'body', // Використовуємо шрифт з теми
-        color: 'gray.800', // Колір тексту
-        bg: 'lightgreen', // Фоновий колір
-        lineHeight: 'base', // Міжрядковий інтервал
+        fontFamily: 'body',
+        color: props.colorMode === 'light' ? 'customGreen.800' : 'white',
+        bg: props.colorMode === 'light' ? 'customGreen.200' : 'customGreen.900',
+        lineHeight: 'base',
       },
-    },
+    }),
   },
   colors: {
     mint: {
@@ -24,6 +30,18 @@ const customTheme = extendTheme({
       800: '#004d00',
       900: '#003300',
     },
+    customGreen: {
+      50: '#F0FFF4',
+      100: '#E8F8E0',
+      200: '#E0FFE0',
+      300: '#DFFFD6',
+      400: '#D4FCD6',
+      500: '#CCFFCC',
+      600: '#E0F7E0',
+      700: '#DFF2D8',
+      800: '#C9F9C8',
+      900: '#C9F9C8',
+    },
   },
   components: {
     main: {
@@ -32,6 +50,12 @@ const customTheme = extendTheme({
         maxW: '1200px',
         mx: 'auto',
         flexGrow: 1,
+        bg: 'customGreen.100',
+        color: 'mint.800',
+        _dark: {
+          bg: 'mint.900',
+          color: 'white',
+        },
       },
     },
   },

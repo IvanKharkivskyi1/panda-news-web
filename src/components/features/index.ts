@@ -1,1 +1,1 @@
-export { Feature } from './Feature';
+export { ThemeSwitcher } from './ThemeSwitcher';

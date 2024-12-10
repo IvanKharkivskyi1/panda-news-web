@@ -15,7 +15,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ to, children, ...props }) => {
       borderRadius="8px"
       p={2}
       bg="mint.100"
-      _hover={{ bg: 'mint.400', textDecoration: 'none', color: 'mint.100' }}
+      color="MenuText"
+      _hover={{ bg: 'green.400', textDecoration: 'none', color: 'mint.100' }}
     >
       {children}
     </ChakraLink>

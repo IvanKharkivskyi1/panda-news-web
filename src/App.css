@@ -36,11 +36,37 @@
     transform: rotate(360deg);
   }
 }
+
 html,
 body,
 #root {
   height: 100vh;
 }
-body {
-  background: lightseagreen;
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.pagination-page {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-previous,
+.pagination-next {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-active {
+  font-weight: bold;
+}
+
+.pagination-disabled {
+  opacity: 0.6;
+  pointer-events: none;
 }

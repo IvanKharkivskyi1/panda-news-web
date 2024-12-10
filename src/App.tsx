@@ -1,6 +1,6 @@
 import './App.css';
-import { AppThemeProvider } from './store/contexts/AppThemeProvider/AppThemeProvider';
 import { Router } from './components/router/Router';
+import { AppThemeProvider } from './store/contexts/AppThemeProvider/AppThemeProvider';
 
 function App() {
   return (

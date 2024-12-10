@@ -5,9 +5,12 @@
   "type": "module",
   "homepage": "https://IvanKharkivskyi1.github.io/panda-news",
   "dependencies": {
+    "@apollo/client": "^3.12.2",
+    "@chakra-ui/icons": "^2.2.4",
     "@chakra-ui/react": "^2.6.0",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "@tanstack/react-query": "^5.62.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -17,6 +20,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-paginate": "^8.2.0",
     "react-router-dom": "^6.14.0",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"

@@ -1,4 +1,5 @@
 import { Flex, useStyleConfig } from '@chakra-ui/react';
+import { ThemeSwitcher } from '../../../components';
 import { NavLink } from './NavLink';
 
 export const Navbar = () => {
@@ -14,13 +15,16 @@ export const Navbar = () => {
 
   return (
     <Flex bg="mint.900">
-      <Flex as="nav" sx={styles}>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-        <NavLink to="/counter">Counter</NavLink>
-        <NavLink to="/countries">Countries</NavLink>
-        <NavLink to="/calendar">Calendar</NavLink>
-        <NavLink to="/matches">Football Matches</NavLink>
-        <NavLink to="/new">New</NavLink>
+      <Flex as="nav" sx={styles} justifyContent="space-between">
+        <Flex>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+          <NavLink to="/counter">Counter</NavLink>
+          <NavLink to="/countries">Countries</NavLink>
+          <NavLink to="/calendar">Calendar</NavLink>
+          <NavLink to="/matches">Football Matches</NavLink>
+          <NavLink to="/new">New</NavLink>
+        </Flex>
+        <ThemeSwitcher />
       </Flex>
     </Flex>
   );
