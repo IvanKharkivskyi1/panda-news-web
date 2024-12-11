@@ -1,26 +1,17 @@
-import { Flex, HStack, Skeleton, Text, VStack } from '@chakra-ui/react';
-import { CountriesList } from '../components/features/Countries/CountriesList';
-import { FilterDropdown } from '../components/features/FilterDropdown';
-import { SearchBar } from '../components/features/SearchBar';
-import { SortDropdown } from '../components/features/SortDropdown';
-import { EmptyState } from '../components/placeholders';
-import { useCountriesQuery } from '../hooks/useCountriesQuery';
-import { useCountryFilters } from '../hooks/useCountryFilters';
+import { Flex, HStack, Text, VStack } from '@chakra-ui/react';
+import {
+  CountriesList,
+  EmptyState,
+  FilterDropdown,
+  SearchBar,
+  SortDropdown,
+} from '../components';
+import { useCountriesQuery, useCountryFilters } from '../hooks';
 
 export const Countries = () => {
   const { countries, isLoading, isError, error } = useCountriesQuery();
   const { filteredCountries, handleSearch, handleFilter, handleSort } =
     useCountryFilters(countries);
-
-  if (isLoading) {
-    return (
-      <Flex align="center" justify="center" h="100vh">
-        <Skeleton height="50px" />
-        <Text>Loading countries...</Text>
-        <Skeleton height="50px" />
-      </Flex>
-    );
-  }
 
   if (isError) {
     return <Text>Error: {(error as Error).message}</Text>;
@@ -57,7 +48,7 @@ export const Countries = () => {
           />
         </HStack>
       </HStack>
-      <CountriesList countries={filteredCountries} isLoading={false} />
+      <CountriesList countries={filteredCountries} isLoading={isLoading} />
     </VStack>
   );
 };

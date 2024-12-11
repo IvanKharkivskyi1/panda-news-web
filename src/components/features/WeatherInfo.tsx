@@ -12,6 +12,8 @@ export const WeatherInfo: React.FC<WeatherInfoProps> = ({ capital }) => {
   const [conditionText, setConditionText] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!capital) return;
+
     const getWeather = async () => {
       const weatherData = await fetchWeather(capital);
       if (weatherData) {

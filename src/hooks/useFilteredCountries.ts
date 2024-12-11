@@ -1,5 +1,5 @@
+import type { Country } from '@/shared';
 import { useEffect, useState } from 'react';
-import type { Country } from '../shared/types/countryTypes';
 
 export const useFilteredCountries = (
   countries: (Country & { temperature?: number })[],
@@ -22,13 +22,12 @@ export const useFilteredCountries = (
     }
 
     if (selectedRegion) {
-      results = results.filter(country => {
-        const continentName =
-          typeof country.continent === 'string'
+      results = results.filter(
+        country =>
+          (typeof country.continent === 'string'
             ? country.continent.toLowerCase()
-            : '';
-        return continentName === selectedRegion.toLowerCase();
-      });
+            : '') === selectedRegion.toLowerCase()
+      );
     }
 
     results.sort((a, b) => {

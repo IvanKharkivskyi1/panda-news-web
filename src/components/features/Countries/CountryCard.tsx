@@ -1,6 +1,6 @@
 import { Box, Card, Flex, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
-import { WeatherInfo } from '../../../components/features/WeatherInfo';
+import { WeatherInfo } from '../../../components';
 
 type CountryCardProps = {
   name: {

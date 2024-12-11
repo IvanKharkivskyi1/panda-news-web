@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
+import type { Country } from '@/shared';
 import { fetchWeatherWithTemperature } from '../../src/services/api/api';
-import type { Country } from '@/shared/types/countryTypes';
 
 const batchPromises = async <T, R>(
   items: T[],
@@ -24,6 +24,8 @@ export const useEnrichedCountries = (countries: Country[]) => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!countries.length) return;
+
     const enrichCountries = async () => {
       setIsLoading(true);
       try {

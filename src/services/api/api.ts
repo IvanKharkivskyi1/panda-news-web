@@ -1,5 +1,5 @@
+import type { Country, RawCountry, RawWeather } from '@/shared';
 import axios from 'axios';
-import type { Country, RawCountry } from '../../shared/';
 import {
   REST_COUNTRIES_URL,
   WEATHER_API_KEY,
@@ -24,22 +24,6 @@ const retryRequest = async <T>(
   }
   throw new Error('All retries failed');
 };
-
-export interface RawWeatherData {
-  location: {
-    name: string;
-    region: string;
-    country: string;
-  };
-  current: {
-    temp_c: number;
-    temp_f: number;
-    condition: {
-      text: string;
-      icon: string;
-    };
-  };
-}
 
 const cityNameMapping: Record<string, string> = {
   Naypyidaw: 'Nay Pyi Taw',
@@ -88,14 +72,14 @@ const handleApiError = (
 
 export const fetchWeather = async (
   capital: string | null
-): Promise<RawWeatherData | null> => {
+): Promise<RawWeather | null> => {
   if (!capital || capital.trim() === '' || capital === 'Unknown') {
     console.warn(`Invalid city name: ${capital}`);
     return null;
   }
 
   try {
-    const response = await axios.get<RawWeatherData>(`${WEATHER_URL}`, {
+    const response = await axios.get<RawWeather>(`${WEATHER_URL}`, {
       params: {
         key: WEATHER_API_KEY,
         q: capital,

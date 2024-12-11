@@ -1,7 +1,7 @@
 import { Box, Spinner, Text, VStack } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { FOOTBALL_API_KEY, FOOTBALL_URL } from '../shared/constants/apiKeys';
+import { FOOTBALL_API_KEY, FOOTBALL_URL } from '../shared';
 
 if (!FOOTBALL_API_KEY || !FOOTBALL_URL) {
   throw new Error(

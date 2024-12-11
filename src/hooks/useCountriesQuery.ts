@@ -1,4 +1,4 @@
-import type { Country } from '@/shared/types/countryTypes';
+import type { Country } from '@/shared';
 import { useQuery } from '@tanstack/react-query';
 import { fetchCountries } from '../services/api/api';
 
