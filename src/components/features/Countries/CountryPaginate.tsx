@@ -1,3 +1,4 @@
+import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 import { Button } from '@chakra-ui/react';
 import React from 'react';
 import ReactPaginate from 'react-paginate';
@@ -14,13 +15,13 @@ export const CountryPaginate: React.FC<CountryPaginateProps> = ({
   return (
     <ReactPaginate
       previousLabel={
-        <Button size="sm" colorScheme="green">
-          ← Previous
+        <Button size="sm" colorScheme="green" rightIcon={<ArrowBackIcon />}>
+          Previous
         </Button>
       }
       nextLabel={
-        <Button size="sm" colorScheme="green">
-          Next →
+        <Button size="sm" colorScheme="green" rightIcon={<ArrowForwardIcon />}>
+          Next
         </Button>
       }
       pageCount={pageCount}

@@ -28,7 +28,7 @@ export const CountryCard: React.FC<CountryCardProps> = ({
         </Heading>
         <Flex>
           {flag ? (
-            <Image src={flag} alt={`${name.common} flag`} maxW="200px" />
+            <Image src={flag} alt={`${name.common} flag`} maxW="40px" />
           ) : (
             <Text>No flag available</Text>
           )}
