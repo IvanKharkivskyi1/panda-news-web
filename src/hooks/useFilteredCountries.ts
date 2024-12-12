@@ -24,8 +24,8 @@ export const useFilteredCountries = (
     if (selectedRegion) {
       results = results.filter(
         country =>
-          (typeof country.continent === 'string'
-            ? country.continent.toLowerCase()
+          (typeof country.continents?.[0] === 'string'
+            ? country.continents?.[0].toLowerCase()
             : '') === selectedRegion.toLowerCase()
       );
     }

@@ -15,7 +15,7 @@ export const CountryPaginate: React.FC<CountryPaginateProps> = ({
   return (
     <ReactPaginate
       previousLabel={
-        <Button size="sm" colorScheme="green" rightIcon={<ArrowBackIcon />}>
+        <Button size="sm" colorScheme="green" leftIcon={<ArrowBackIcon />}>
           Previous
         </Button>
       }

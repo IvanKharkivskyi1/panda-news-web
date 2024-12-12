@@ -14,6 +14,7 @@ export interface Country {
   continent: string;
   languages: string[];
   currency: string;
+  continents: string[];
 }
 
 export interface RawCountry {

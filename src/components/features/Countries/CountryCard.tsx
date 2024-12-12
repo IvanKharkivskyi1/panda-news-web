@@ -21,7 +21,15 @@ export const CountryCard: React.FC<CountryCardProps> = ({
   const capitalCity = capital?.[0] || null;
 
   return (
-    <Card p={4}>
+    <Card
+      p={4}
+      display="grid"
+      gridTemplateRows="auto 1fr auto"
+      borderRadius="$border-radius"
+      border="1px solid $border-color"
+      minHeight="150px"
+      position="relative"
+    >
       <Box>
         <Heading size="sm" mb={2}>
           {name.common}
@@ -37,7 +45,7 @@ export const CountryCard: React.FC<CountryCardProps> = ({
       <Text>Capital: {capitalCity || 'No capital available'}</Text>
       <Text>Continent: {continent}</Text>
       {capitalCity ? (
-        <WeatherInfo capital={capitalCity} />
+        <WeatherInfo countryName={name.common} />
       ) : (
         <Text>No weather information available.</Text>
       )}

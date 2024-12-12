@@ -1,4 +1,4 @@
-import { Flex, HStack, Text, VStack } from '@chakra-ui/react';
+import { Box, Flex, HStack, Text } from '@chakra-ui/react';
 import {
   CountriesList,
   EmptyState,
@@ -7,11 +7,14 @@ import {
   SortDropdown,
 } from '../components';
 import { useCountriesQuery, useCountryFilters } from '../hooks';
+import { Continents } from '../shared';
 
 export const Countries = () => {
   const { countries, isLoading, isError, error } = useCountriesQuery();
   const { filteredCountries, handleSearch, handleFilter, handleSort } =
     useCountryFilters(countries);
+
+  const continentOptions = Object.values(Continents);
 
   if (isError) {
     return <Text>Error: {(error as Error).message}</Text>;
@@ -27,12 +30,12 @@ export const Countries = () => {
   }
 
   return (
-    <VStack>
-      <HStack w="full">
+    <Box w="full">
+      <HStack>
         <SearchBar onSearch={handleSearch} />
         <HStack flexShrink={0}>
           <FilterDropdown
-            options={['Asia', 'Europe', 'Africa', 'Oceania', 'America']}
+            options={continentOptions}
             onFilter={handleFilter}
             label="Filter by Region"
           />
@@ -49,6 +52,6 @@ export const Countries = () => {
         </HStack>
       </HStack>
       <CountriesList countries={filteredCountries} isLoading={isLoading} />
-    </VStack>
+    </Box>
   );
 };

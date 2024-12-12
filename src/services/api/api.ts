@@ -1,7 +1,8 @@
-import type { Country, RawCountry, RawWeather } from '@/shared';
+import type { RawWeather } from '@/shared';
 import axios from 'axios';
 import {
-  REST_COUNTRIES_URL,
+  IncorrectCityNames,
+  IncorrectCountryNames,
   WEATHER_API_KEY,
   WEATHER_URL,
 } from '../../shared/';
@@ -25,14 +26,7 @@ const retryRequest = async <T>(
   throw new Error('All retries failed');
 };
 
-const cityNameMapping: Record<string, string> = {
-  Naypyidaw: 'Nay Pyi Taw',
-  Ngerulmud: 'Melekeok',
-  Fakaofo: 'Tokelau',
-  "Nuku'alofa": 'Tongatapu',
-  Yaoundé: 'Yaounde',
-  "Sana'a": 'Sanaa',
-};
+const cityNameMapping: Record<string, string> = IncorrectCityNames;
 
 const normalizeCityName = (city: string): string =>
   city
@@ -70,30 +64,34 @@ const handleApiError = (
   }
 };
 
+const countryNameMap: Record<string, string> = IncorrectCountryNames;
+
 export const fetchWeather = async (
-  capital: string | null
+  query: string | null
 ): Promise<RawWeather | null> => {
-  if (!capital || capital.trim() === '' || capital === 'Unknown') {
-    console.warn(`Invalid city name: ${capital}`);
+  if (!query || query.trim() === '' || query === 'Unknown') {
+    console.warn(`Invalid query parameter: ${query}`);
     return null;
   }
+
+  const transformedQuery = countryNameMap[query] || query;
 
   try {
     const response = await axios.get<RawWeather>(`${WEATHER_URL}`, {
       params: {
         key: WEATHER_API_KEY,
-        q: capital,
+        q: transformedQuery,
       },
     });
 
     if (!response.data || !response.data.current) {
-      console.warn(`Weather data not found for: ${capital}`);
+      console.warn(`Weather data not found for: ${transformedQuery}`);
       return null;
     }
 
     return response.data;
   } catch (error: unknown) {
-    handleApiError(error, capital);
+    handleApiError(error, transformedQuery);
     return null;
   }
 };
@@ -134,44 +132,5 @@ export const fetchWeatherWithTemperature = async (
   } catch (error: unknown) {
     handleApiError(error, capital, normalizedCapital);
     return null;
-  }
-};
-
-export const fetchCountries = async (): Promise<Country[]> => {
-  try {
-    const response = await axios.get<RawCountry[]>(REST_COUNTRIES_URL);
-
-    if (response.status !== 200) {
-      throw new Error(`Error fetching countries: ${response.statusText}`);
-    }
-
-    if (!Array.isArray(response.data)) {
-      throw new Error('Invalid countries data format');
-    }
-
-    return response.data.map(country => ({
-      name: {
-        common: country.name.common,
-        official: country.name.official,
-      },
-      capital: country.capital || [],
-      region: country.region || 'Unknown',
-      population: country.population || 0,
-      flags: {
-        png: country.flags?.png || '',
-        svg: country.flags?.svg || '',
-      },
-      code: country.cca2 || '',
-      continent: country.continents?.[0] || 'Unknown',
-      languages: country.languages ? Object.values(country.languages) : [],
-      currency: country.currencies
-        ? Object.keys(country.currencies)
-            .map(key => country.currencies?.[key]?.name || 'Unknown')
-            .join(', ')
-        : 'Unknown',
-    }));
-  } catch (error: unknown) {
-    console.error('Failed to fetch countries:', error);
-    throw error;
   }
 };

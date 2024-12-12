@@ -1,7 +1,7 @@
-import { Flex, Skeleton, VStack } from '@chakra-ui/react';
+import { Grid, Skeleton, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { usePagination } from '../../../hooks';
-import { type Country } from '../../../shared';
+import { PAGINATION, type Country } from '../../../shared';
 import { EmptyState } from '../../placeholders';
 import { CountryCard } from './CountryCard';
 import { CountryPaginate } from './CountryPaginate';
@@ -15,7 +15,7 @@ export const CountriesList: React.FC<CountriesListProps> = ({
   countries,
   isLoading,
 }) => {
-  const ITEMS_PER_PAGE = 10;
+  const { ITEMS_PER_PAGE } = PAGINATION;
 
   const { paginatedItems, handlePageClick } = usePagination(
     countries,
@@ -39,26 +39,30 @@ export const CountriesList: React.FC<CountriesListProps> = ({
   }
 
   return (
-    <>
+    <VStack w="full" py={4}>
       <CountryPaginate
         pageCount={Math.ceil(countries.length / ITEMS_PER_PAGE)}
         onPageChange={({ selected }) => handlePageClick(selected)}
       />
-      <Flex wrap="wrap" gap={4}>
+      <Grid
+        gridTemplateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+        gap={4}
+        w="full"
+      >
         {paginatedItems.map(country => (
           <CountryCard
-            key={country.code}
+            key={country.code || country.name.common}
             name={country.name}
             capital={country.capital || 'No capital available'}
-            continent={country.continent || 'Unknown'}
+            continent={country.continents?.[0] || 'Unknown'}
             flag={country.flags.png}
           />
         ))}
-      </Flex>
+      </Grid>
       <CountryPaginate
         pageCount={Math.ceil(countries.length / ITEMS_PER_PAGE)}
         onPageChange={({ selected }) => handlePageClick(selected)}
       />
-    </>
+    </VStack>
   );
 };

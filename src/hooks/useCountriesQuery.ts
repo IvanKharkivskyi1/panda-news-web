@@ -1,6 +1,6 @@
-import type { Country } from '@/shared';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCountries } from '../services/api/api';
+import axios from 'axios';
+import { REST_COUNTRIES_URL, type Country } from '../shared';
 
 export const useCountriesQuery = () => {
   const {
@@ -10,7 +10,15 @@ export const useCountriesQuery = () => {
     error,
   } = useQuery<Country[], Error>({
     queryKey: ['countries'],
-    queryFn: fetchCountries,
+    queryFn: async () => {
+      const response = await axios.get<Country[]>(REST_COUNTRIES_URL);
+
+      if (response.status !== 200) {
+        throw new Error(`Error fetching countries: ${response.statusText}`);
+      }
+
+      return response.data;
+    },
   });
 
   return {
