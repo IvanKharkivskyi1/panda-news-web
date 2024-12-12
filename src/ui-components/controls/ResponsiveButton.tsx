@@ -7,8 +7,14 @@ import {
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import type { JSX } from 'react/jsx-runtime';
 
-import {} from '@chakra-ui/react';
+import { keyframes } from '@emotion/react';
 import { useIsMobile } from '../../hooks';
+
+const pulseAnimation = keyframes`
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+`;
 
 export const Button = (
   props: JSX.IntrinsicAttributes &
@@ -30,19 +36,23 @@ export const Button = (
   );
 };
 
-export const IconButton = (
-  props: JSX.IntrinsicAttributes &
-    Omit<
-      DetailedHTMLProps<
-        ButtonHTMLAttributes<HTMLButtonElement>,
-        HTMLButtonElement
-      >,
-      keyof IconButtonProps
-    > &
-    IconButtonProps & {
-      as?: 'button';
-    }
-) => {
+type ExtendedIconButtonProps = IconButtonProps & {
+  isAnimating?: boolean;
+  href?: string;
+  target?: string;
+};
+
+export const IconButton = (props: ExtendedIconButtonProps) => {
+  const { isAnimating, ...rest } = props;
   const isMobile = useIsMobile();
-  return <ChakraIconButton size={isMobile ? 'xs' : 'lg'} {...props} />;
+
+  return (
+    <ChakraIconButton
+      size={isMobile ? 'xs' : 'md'}
+      {...rest}
+      animation={
+        isAnimating ? `${pulseAnimation} 2s ease-in-out infinite` : undefined
+      }
+    />
+  );
 };

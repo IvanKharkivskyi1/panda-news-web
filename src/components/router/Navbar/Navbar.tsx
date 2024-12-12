@@ -1,6 +1,7 @@
-import { Flex, Icon, IconButton, Link, useStyleConfig } from '@chakra-ui/react';
+import { Flex, Icon, useStyleConfig } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
 import { ThemeSwitcher } from '../../../components';
+import { IconButton, TooltipHover } from '../../../ui-components/controls';
 import { NavLink } from './NavLink';
 
 export const Navbar = () => {
@@ -26,14 +27,17 @@ export const Navbar = () => {
         </Flex>
         <Flex gap={2}>
           <ThemeSwitcher />
-          <IconButton
-            as={Link}
-            aria-label={'data-testid-github'}
-            colorScheme="green"
-            icon={<Icon as={FaGithub} />}
-            href="https://github.com/IvanKharkivskyi1/panda-news"
-            target="_blank"
-          />
+          <TooltipHover label="Welcome to my GitHup repo">
+            <IconButton
+              as="a"
+              aria-label="data-testid-github"
+              colorScheme="green"
+              icon={<Icon as={FaGithub} />}
+              href="https://github.com/IvanKharkivskyi1/panda-news"
+              target="_blank"
+              isAnimating
+            />
+          </TooltipHover>
         </Flex>
       </Flex>
     </Flex>
