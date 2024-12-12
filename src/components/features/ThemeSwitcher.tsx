@@ -1,5 +1,6 @@
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import { IconButton, useColorMode } from '@chakra-ui/react';
+import { useColorMode } from '@chakra-ui/react';
+import { IconButton } from '../../ui-components/controls/ResponsiveButton';
 
 export const ThemeSwitcher = () => {
   const { colorMode, toggleColorMode } = useColorMode();
