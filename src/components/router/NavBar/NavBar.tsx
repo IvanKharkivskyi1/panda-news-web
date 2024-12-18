@@ -1,8 +1,7 @@
-import { ThemeSwitcher } from '@/components';
+import { AuthModal, NavLink, ThemeSwitcher } from '@/components';
 import { IconButton, TooltipHover } from '@/ui-components';
 import { Flex, Icon, useStyleConfig } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
-import { NavLink } from './NavLink';
 
 export const NavBar = () => {
   const navStyles = useStyleConfig('nav');
@@ -24,8 +23,10 @@ export const NavBar = () => {
           <NavLink to="/calendar">Calendar</NavLink>
           <NavLink to="/matches">Football Matches</NavLink>
           <NavLink to="/new">News</NavLink>
+          <NavLink to="/profile">Profile</NavLink>
         </Flex>
         <Flex gap={2}>
+          <AuthModal />
           <ThemeSwitcher />
           <TooltipHover label="Welcome to my GitHup repo">
             <IconButton

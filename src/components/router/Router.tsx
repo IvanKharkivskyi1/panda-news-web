@@ -5,6 +5,7 @@ import {
   Dashboard,
   FootballMatches,
   New,
+  UserProfile,
 } from '@/pages';
 import { Flex, useColorMode, useStyleConfig } from '@chakra-ui/react';
 import React from 'react';
@@ -32,6 +33,7 @@ export const Router: React.FC = () => {
           <Route path="/calendar" element={<Calendar />} />
           <Route path="/matches" element={<FootballMatches />} />
           <Route path="/new" element={<New />} />
+          <Route path="/profile" element={<UserProfile />} />
         </Routes>
       </Flex>
       <Flex
