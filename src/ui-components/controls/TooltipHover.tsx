@@ -16,9 +16,9 @@ export const TooltipHover = (props: {
     | ReactPortal
     | null
     | undefined;
-  label: string; // Tooltip label
+  label: string;
 }) => {
-  const { children, label } = props; // Destructure label and children
+  const { children, label } = props;
 
   return (
     <Tooltip label={label}>

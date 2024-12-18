@@ -1,6 +1,6 @@
 import type { Weather } from '@/shared';
 import { useEffect, useState } from 'react';
-import { fetchWeather } from '../services/api/api';
+import { fetchWeather } from '@/services';
 
 export const useFetchWeather = (capital: string) => {
   const [weather, setWeather] = useState<Weather | null>(null);

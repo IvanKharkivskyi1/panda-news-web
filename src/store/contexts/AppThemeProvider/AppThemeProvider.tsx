@@ -1,6 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { createContext, ReactNode } from 'react';
-import customTheme from '../../../ui-components/theme';
+import { customTheme } from '@/ui-components';
 
 interface ThemeContextProps {
   isDarkTheme: boolean;

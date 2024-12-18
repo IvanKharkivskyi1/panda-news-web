@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 
 const queryClient = new QueryClient();
 
@@ -24,4 +24,4 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
+// reportWebVitals();

@@ -11,7 +11,7 @@ const sharedStyles = {
   mx: 'auto',
 };
 
-const customTheme = extendTheme({
+export const customTheme = extendTheme({
   config,
   styles: {
     global: (props: { colorMode: string }) => ({
@@ -88,5 +88,3 @@ const customTheme = extendTheme({
     },
   },
 });
-
-export default customTheme;

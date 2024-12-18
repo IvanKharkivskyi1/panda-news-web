@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import type { Country } from '@/shared';
-import { fetchWeatherWithTemperature } from '../../src/services/api/api';
+import { fetchWeatherWithTemperature } from '@/services';
 
 const batchPromises = async <T, R>(
   items: T[],

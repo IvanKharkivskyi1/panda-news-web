@@ -1,11 +1,12 @@
-import type { RawWeather } from '@/shared';
 import axios from 'axios';
+
 import {
+  type RawWeather,
   IncorrectCityNames,
   IncorrectCountryNames,
   WEATHER_API_KEY,
   WEATHER_URL,
-} from '../../shared/';
+} from '@/shared';
 
 const axiosWithTimeout = axios.create({
   timeout: 10000,

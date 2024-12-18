@@ -1,10 +1,10 @@
+import { ThemeSwitcher } from '@/components';
+import { IconButton, TooltipHover } from '@/ui-components';
 import { Flex, Icon, useStyleConfig } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
-import { ThemeSwitcher } from '../../../components';
-import { IconButton, TooltipHover } from '../../../ui-components/controls';
 import { NavLink } from './NavLink';
 
-export const Navbar = () => {
+export const NavBar = () => {
   const navStyles = useStyleConfig('nav');
   const headerStyles = useStyleConfig('header');
 

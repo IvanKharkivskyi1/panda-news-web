@@ -1,6 +1,6 @@
 import type { Country } from '@/shared';
 import { useState } from 'react';
-import { useEnrichedCountries, useFilteredCountries } from '../hooks';
+import { useEnrichedCountries, useFilteredCountries } from '@/hooks';
 
 export const useCountryFilters = (countries: Country[]) => {
   const [query, setQuery] = useState<string>('');

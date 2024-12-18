@@ -8,5 +8,5 @@ export const resolve = {
   alias: {
     '@': path.resolve(__dirname, 'src'),
   },
-  extensions: ['.js', '.jsx', '.ts', '.tsx'],
+  extensions: ['.ts', '.tsx', '.js', '.jsx'],
 };

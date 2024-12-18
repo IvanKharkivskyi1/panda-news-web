@@ -1,8 +1,8 @@
+import { EmptyState } from '@/components';
+import { usePagination } from '@/hooks';
+import { PAGINATION, type Country } from '@/shared';
 import { Grid, Skeleton, VStack } from '@chakra-ui/react';
 import React from 'react';
-import { usePagination } from '../../../hooks';
-import { PAGINATION, type Country } from '../../../shared';
-import { EmptyState } from '../../placeholders';
 import { CountryCard } from './CountryCard';
 import { CountryPaginate } from './CountryPaginate';
 

@@ -1,6 +1,6 @@
+import { fetchWeather } from '@/services';
 import { Flex, Image, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { fetchWeather } from '../../services/api/api';
 
 interface WeatherInfoProps {
   countryName?: string;

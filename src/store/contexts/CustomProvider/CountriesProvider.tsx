@@ -1,6 +1,6 @@
+import { useCountriesQuery } from '@/hooks';
+import type { Country } from '@/shared';
 import { createContext, useContext } from 'react';
-import { useCountriesQuery } from '../../../hooks/useCountriesQuery';
-import type { Country } from '../../../shared';
 
 interface CountriesContextValue {
   countries: Country[];

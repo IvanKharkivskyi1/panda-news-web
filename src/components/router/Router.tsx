@@ -1,6 +1,3 @@
-import { Flex, useColorMode, useStyleConfig } from '@chakra-ui/react';
-import React from 'react';
-import { Navigate, Route, Routes } from 'react-router-dom';
 import {
   Calendar,
   Counter,
@@ -8,8 +5,11 @@ import {
   Dashboard,
   FootballMatches,
   New,
-} from '../../pages';
-import { Navbar } from './Navbar/Navbar';
+} from '@/pages';
+import { Flex, useColorMode, useStyleConfig } from '@chakra-ui/react';
+import React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { NavBar } from './NavBar';
 
 export const Router: React.FC = () => {
   const styles = useStyleConfig('main');
@@ -17,7 +17,7 @@ export const Router: React.FC = () => {
 
   return (
     <Flex flexDir="column" h="100vh" justifyContent="space-between">
-      <Navbar />
+      <NavBar />
       <Flex
         sx={styles}
         overflow="auto"

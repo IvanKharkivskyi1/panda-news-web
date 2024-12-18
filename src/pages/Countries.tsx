@@ -5,9 +5,9 @@ import {
   FilterDropdown,
   SearchBar,
   SortDropdown,
-} from '../components';
-import { useCountriesQuery, useCountryFilters } from '../hooks';
-import { Continents } from '../shared';
+} from '@/components';
+import { useCountriesQuery, useCountryFilters } from '@/hooks';
+import { Continents } from '@/shared';
 
 export const Countries = () => {
   const { countries, isLoading, isError, error } = useCountriesQuery();

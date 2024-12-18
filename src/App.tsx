@@ -1,5 +1,5 @@
 import './App.css';
-import { Router } from './components/router/Router';
+import { Router } from './components';
 import { AppThemeProvider } from './store/contexts/AppThemeProvider/AppThemeProvider';
 
 function App() {

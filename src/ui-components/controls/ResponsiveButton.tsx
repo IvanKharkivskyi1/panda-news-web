@@ -7,8 +7,8 @@ import {
 import type { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import type { JSX } from 'react/jsx-runtime';
 
+import { useIsMobile } from '@/hooks';
 import { keyframes } from '@emotion/react';
-import { useIsMobile } from '../../hooks';
 
 const pulseAnimation = keyframes`
   0% { transform: scale(1); }
