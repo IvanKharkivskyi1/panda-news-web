@@ -39,7 +39,6 @@ app.post('/api/login', async (req, res) => {
   res.json({ token });
 });
 
-// Protected route
 app.get('/api/protected', (req, res) => {
   const authHeader = req.headers.authorization;
 
@@ -72,7 +71,7 @@ app.get('/api/user', async (req, res) => {
     const decoded = jwt.verify(token, 'your_secret_key');
     const user = await prisma.user.findUnique({
       where: { id: decoded.id },
-      select: { email: true }, // Вибираємо лише необхідні поля
+      select: { email: true },
     });
 
     if (!user) {

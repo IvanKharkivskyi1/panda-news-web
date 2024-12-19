@@ -15,6 +15,10 @@ export interface Country {
   languages: string[];
   currency: string;
   continents: string[];
+  maps: {
+    googleMaps: string;
+    openStreetMaps: string;
+  };
 }
 
 export interface RawCountry {

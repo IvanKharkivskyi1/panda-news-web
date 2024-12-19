@@ -82,11 +82,11 @@ export const AuthModal: React.FC = () => {
   return (
     <>
       {token ? (
-        <Button colorScheme="red" onClick={handleLogout}>
+        <Button colorScheme="green" onClick={handleLogout}>
           Logout
         </Button>
       ) : (
-        <Button colorScheme="blue" onClick={onOpen}>
+        <Button colorScheme="green" onClick={onOpen}>
           Login / Register
         </Button>
       )}
@@ -132,12 +132,13 @@ export const AuthModal: React.FC = () => {
                   id="isRegister"
                   isChecked={isRegister}
                   onChange={e => setIsRegister(e.target.checked)}
+                  colorScheme="green"
                 />
               </FormControl>
             </VStack>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" onClick={handleAuth}>
+            <Button colorScheme="green" onClick={handleAuth}>
               {isRegister ? 'Register' : 'Login'}
             </Button>
             <Button variant="ghost" onClick={onClose} ml={3}>

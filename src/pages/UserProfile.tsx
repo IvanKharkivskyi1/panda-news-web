@@ -6,15 +6,13 @@ export const UserProfile: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Отримання токена з localStorage
     const token = localStorage.getItem('token');
     if (!token) {
       alert('You need to log in first.');
-      navigate('/'); // Перенаправляємо на головну
+      navigate('/');
       return;
     }
 
-    // Запит до бекенду для отримання даних користувача
     const fetchUserData = async () => {
       try {
         const response = await fetch(`${process.env.REACT_APP_API_URL}/user`, {
