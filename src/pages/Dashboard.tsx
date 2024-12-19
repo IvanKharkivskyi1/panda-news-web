@@ -90,6 +90,7 @@ export const Dashboard = () => {
                   border="0"
                   allowFullScreen
                   loading="lazy"
+                  title="first country map"
                 />
               </Box>
             )}
