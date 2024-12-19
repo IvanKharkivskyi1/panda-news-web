@@ -1,7 +1,5 @@
-import { FilterDropdown } from '@/components';
-import { useCountriesQuery, useCountryFilters } from '@/hooks';
-import { DateWidget } from '@/pages/DateWidget';
-import { Continents } from '@/shared';
+import { useEffect, useState } from 'react';
+
 import {
   Box,
   Card,
@@ -10,9 +8,15 @@ import {
   Spinner,
   Text,
 } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import { ChartByLetter } from './ChartByLetter';
-import { ChartByTemperature } from './ChartByTemperature';
+
+import {
+  ChartByLetter,
+  ChartByTemperature,
+  DateWidget,
+  FilterDropdown,
+} from '@/components';
+import { useCountriesQuery, useCountryFilters } from '@/hooks';
+import { Continents } from '@/shared';
 
 export const Dashboard = () => {
   const continentOptions = Object.values(Continents);
@@ -68,7 +72,7 @@ export const Dashboard = () => {
 
         {/* Render OpenStreetMap preview */}
         {firstCountry && boundingBox && (
-          <Card p={4} shadow="md" borderWidth="1px">
+          <Card>
             <Text fontSize="lg" mb={4}>
               Map Preview for the First Filtered Country:
             </Text>

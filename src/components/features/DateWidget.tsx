@@ -1,5 +1,6 @@
-import { Box, Button, Input, Text, VStack } from '@chakra-ui/react';
 import React, { useState } from 'react';
+
+import { Box, Button, Card, Input, Text } from '@chakra-ui/react';
 
 interface DateWidgetProps {
   initialDate?: string;
@@ -18,15 +19,7 @@ export const DateWidget: React.FC<DateWidgetProps> = ({ initialDate }) => {
   };
 
   return (
-    <VStack
-      spacing={4}
-      p={4}
-      border="1px"
-      borderColor="gray.200"
-      borderRadius="md"
-      boxShadow="sm"
-      align="start"
-    >
+    <Card>
       <Text fontWeight="bold" fontSize="lg">
         Date Widget
       </Text>
@@ -42,6 +35,6 @@ export const DateWidget: React.FC<DateWidgetProps> = ({ initialDate }) => {
         Set Today
       </Button>
       <Text>Selected Date: {selectedDate || 'None'}</Text>
-    </VStack>
+    </Card>
   );
 };

@@ -1,6 +1,8 @@
-import { Card, useColorMode, useTheme } from '@chakra-ui/react';
+import { Card } from '@chakra-ui/react';
 import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
+
+import { useChartTheme } from '@/components';
 
 interface ChartByTemperatureProps {
   filteredCountries: Array<{
@@ -13,14 +15,7 @@ export const ChartByTemperature: React.FC<ChartByTemperatureProps> = ({
   filteredCountries,
   title,
 }) => {
-  const { colorMode } = useColorMode();
-  const theme = useTheme();
-
-  const isDarkTheme = colorMode === 'dark';
-
-  const chartColor = isDarkTheme
-    ? theme.colors.mint[100]
-    : theme.colors.mint[800];
+  const chartColor = useChartTheme('mint.800', 'mint.100');
 
   const temperatureCategories = ['Cold', 'Moderate', 'Hot'];
 
@@ -91,11 +86,9 @@ export const ChartByTemperature: React.FC<ChartByTemperatureProps> = ({
     };
   }, [temperatureData, title, chartColor]);
 
-  const chartKey = `${colorMode}-${title}`;
-
   return (
     <Card>
-      <ReactECharts key={chartKey} option={chartData} />
+      <ReactECharts option={chartData} />
     </Card>
   );
 };

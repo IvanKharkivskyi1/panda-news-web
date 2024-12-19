@@ -1,4 +1,10 @@
-import { AuthModal, NavLink, ThemeSwitcher } from '@/components';
+import {
+  AuthModal,
+  LanguageSwitcher,
+  NavLink,
+  ThemeSwitcher,
+} from '@/components';
+import { useLanguage } from '@/store';
 import { IconButton, TooltipHover } from '@/ui-components';
 import { Flex, Icon, useStyleConfig } from '@chakra-ui/react';
 import { FaGithub } from 'react-icons/fa';
@@ -6,6 +12,8 @@ import { FaGithub } from 'react-icons/fa';
 export const NavBar = () => {
   const navStyles = useStyleConfig('nav');
   const headerStyles = useStyleConfig('header');
+
+  const { translation } = useLanguage();
 
   const styles = {
     ...navStyles,
@@ -17,18 +25,19 @@ export const NavBar = () => {
     <Flex as="header" sx={headerStyles}>
       <Flex as="nav" sx={styles} justifyContent="space-between">
         <Flex gap={2}>
-          <NavLink to="/dashboard">Dashboard</NavLink>
-          <NavLink to="/counter">Counter</NavLink>
-          <NavLink to="/countries">Countries</NavLink>
-          <NavLink to="/calendar">Calendar</NavLink>
-          <NavLink to="/matches">Football Matches</NavLink>
-          <NavLink to="/new">News</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
+          <NavLink to="/dashboard">{translation('Dashboard')}</NavLink>
+          <NavLink to="/counter">{translation('Counter')}</NavLink>
+          <NavLink to="/countries">{translation('Countries')}</NavLink>
+          <NavLink to="/calendar">{translation('Calendar')}</NavLink>
+          <NavLink to="/matches">{translation('Football Matches')}</NavLink>
+          <NavLink to="/new">{translation('News')}</NavLink>
+          <NavLink to="/profile">{translation('Profile')}</NavLink>
         </Flex>
         <Flex gap={2}>
+          <LanguageSwitcher />
           <AuthModal />
           <ThemeSwitcher />
-          <TooltipHover label="Welcome to my GitHup repo">
+          <TooltipHover label={translation('tooltipGithub')}>
             <IconButton
               as="a"
               aria-label="data-testid-github"

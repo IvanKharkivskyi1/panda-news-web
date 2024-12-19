@@ -1,3 +1,4 @@
+import { LanguageSwitcher } from '@/components';
 import {
   Calendar,
   Counter,
@@ -41,7 +42,7 @@ export const Router: React.FC = () => {
         p={4}
         justify="center"
       >
-        footer
+        <LanguageSwitcher />
       </Flex>
     </Flex>
   );
