@@ -1,5 +1,6 @@
 import { FilterDropdown } from '@/components';
 import { useCountriesQuery, useCountryFilters } from '@/hooks';
+import { DateWidget } from '@/pages/DateWidget';
 import { Continents } from '@/shared';
 import {
   Box,
@@ -58,6 +59,7 @@ export const Dashboard = () => {
         />
       </Container>
       <SimpleGrid columns={2} spacing={4}>
+        <DateWidget initialDate="2024-12-19" />
         <ChartByLetter filteredCountries={filteredCountries} />
         <ChartByTemperature
           filteredCountries={filteredCountries}

@@ -14,10 +14,9 @@ export const ChartByTemperature: React.FC<ChartByTemperatureProps> = ({
   title,
 }) => {
   const { colorMode } = useColorMode();
+  const theme = useTheme();
 
   const isDarkTheme = colorMode === 'dark';
-
-  const theme = useTheme();
 
   const chartColor = isDarkTheme
     ? theme.colors.mint[100]
@@ -90,11 +89,13 @@ export const ChartByTemperature: React.FC<ChartByTemperatureProps> = ({
         },
       ],
     };
-  }, [temperatureData, title]);
+  }, [temperatureData, title, chartColor]);
+
+  const chartKey = `${colorMode}-${title}`;
 
   return (
     <Card>
-      <ReactECharts option={chartData} />
+      <ReactECharts key={chartKey} option={chartData} />
     </Card>
   );
 };
