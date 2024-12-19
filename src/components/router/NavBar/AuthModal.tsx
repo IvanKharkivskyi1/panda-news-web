@@ -1,6 +1,6 @@
 import { API_URL } from '@/config';
+import { Button } from '@/ui-components';
 import {
-  Button,
   FormControl,
   FormLabel,
   Input,

@@ -17,6 +17,7 @@ export const NavBar = () => {
 
   const styles = {
     ...navStyles,
+    flexWrap: 'wrap',
     p: 4,
     gap: 4,
   };
@@ -24,7 +25,7 @@ export const NavBar = () => {
   return (
     <Flex as="header" sx={headerStyles}>
       <Flex as="nav" sx={styles} justifyContent="space-between">
-        <Flex gap={2}>
+        <Flex gap={2} flexWrap="wrap">
           <NavLink to="/dashboard">{translation('Dashboard')}</NavLink>
           <NavLink to="/counter">{translation('Counter')}</NavLink>
           <NavLink to="/countries">{translation('Countries')}</NavLink>

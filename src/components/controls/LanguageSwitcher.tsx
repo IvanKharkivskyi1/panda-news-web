@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 
 import {
-  Button,
   Flex,
   Image,
   Menu,
@@ -19,6 +18,7 @@ import {
   type LanguageKeys,
 } from '@/shared';
 import { useLanguage } from '@/store';
+import { Button } from '@/ui-components';
 
 export const LanguageSwitcher: React.FC = () => {
   const { language, setLanguage } = useLanguage();

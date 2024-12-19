@@ -15,7 +15,7 @@ import {
   DateWidget,
   FilterDropdown,
 } from '@/components';
-import { useCountriesQuery, useCountryFilters } from '@/hooks';
+import { useCountriesQuery, useCountryFilters, useIsMobile } from '@/hooks';
 import { Continents } from '@/shared';
 
 export const Dashboard = () => {
@@ -26,6 +26,8 @@ export const Dashboard = () => {
   const [loading, setLoading] = useState(false);
 
   const firstCountry = filteredCountries[0]?.maps;
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const fetchBoundingBox = async (relationUrl: string) => {
@@ -62,7 +64,7 @@ export const Dashboard = () => {
           label="Filter by Region"
         />
       </Container>
-      <SimpleGrid columns={2} spacing={4}>
+      <SimpleGrid columns={isMobile ? 1 : 2} spacing={4}>
         <DateWidget initialDate="2024-12-19" />
         <ChartByLetter filteredCountries={filteredCountries} />
         <ChartByTemperature
