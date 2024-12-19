@@ -4,12 +4,12 @@ import axios from 'axios';
 
 import { Spinner, Text, VStack } from '@chakra-ui/react';
 
-import { FOOTBALL_API_KEY, FOOTBALL_URL } from '@/shared';
+import { REACT_APP_FOOTBALL_API_KEY, REACT_APP_FOOTBALL_URL } from '@/shared';
 import { Card } from '@/ui-components';
 
-if (!FOOTBALL_API_KEY || !FOOTBALL_URL) {
+if (!REACT_APP_FOOTBALL_API_KEY || !REACT_APP_FOOTBALL_URL) {
   throw new Error(
-    'API_KEY or FOOTBALL_URL is not defined in the environment variables'
+    'REACT_APP_FOOTBALL_API_KEY or REACT_APP_FOOTBALL_URL is not defined in the environment variables'
   );
 }
 
@@ -36,10 +36,10 @@ export const FootballMatches = () => {
     const fetchMatches = async () => {
       try {
         const response = await axios.get<{ response: Match[] }>(
-          `${FOOTBALL_URL}/fixtures`,
+          `${REACT_APP_FOOTBALL_URL}/fixtures`,
           {
             headers: {
-              'x-rapidapi-key': FOOTBALL_API_KEY,
+              'x-rapidapi-key': REACT_APP_FOOTBALL_API_KEY,
               'x-rapidapi-host': 'v3.football.api-sports.io',
             },
             params: { date: new Date().toISOString().split('T')[0] },

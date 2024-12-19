@@ -4,8 +4,8 @@ import {
   type RawWeather,
   IncorrectCityNames,
   IncorrectCountryNames,
-  WEATHER_API_KEY,
-  WEATHER_URL,
+  REACT_APP_WEATHER_API_KEY,
+  REACT_APP_WEATHER_URL,
 } from '@/shared';
 
 const axiosWithTimeout = axios.create({
@@ -78,9 +78,9 @@ export const fetchWeather = async (
   const transformedQuery = countryNameMap[query] || query;
 
   try {
-    const response = await axios.get<RawWeather>(`${WEATHER_URL}`, {
+    const response = await axios.get<RawWeather>(`${REACT_APP_WEATHER_URL}`, {
       params: {
-        key: WEATHER_API_KEY,
+        key: REACT_APP_WEATHER_API_KEY,
         q: transformedQuery,
       },
     });
@@ -116,9 +116,9 @@ export const fetchWeatherWithTemperature = async (
 
   try {
     const response = await retryRequest(() =>
-      axiosWithTimeout.get(WEATHER_URL, {
+      axiosWithTimeout.get(REACT_APP_WEATHER_URL, {
         params: {
-          key: WEATHER_API_KEY,
+          key: REACT_APP_WEATHER_API_KEY,
           q: normalizedCapital,
         },
       })
