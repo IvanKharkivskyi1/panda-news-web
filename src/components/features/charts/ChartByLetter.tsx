@@ -1,7 +1,9 @@
-import { Card } from '@chakra-ui/react';
+import { useMemo } from 'react';
+
 import * as echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
-import { useMemo } from 'react';
+
+import { Card } from '@/ui-components';
 
 interface ChartByLetterProps {
   filteredCountries: Array<{

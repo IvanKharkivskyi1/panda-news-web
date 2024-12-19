@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import { Box, Button, Card, Input, Text } from '@chakra-ui/react';
+import { Card } from '@/ui-components';
+import { Button, FormControl, Input, Text, VStack } from '@chakra-ui/react';
 
 interface DateWidgetProps {
   initialDate?: string;
@@ -20,21 +21,23 @@ export const DateWidget: React.FC<DateWidgetProps> = ({ initialDate }) => {
 
   return (
     <Card>
-      <Text fontWeight="bold" fontSize="lg">
-        Date Widget
-      </Text>
-      <Box>
-        <Input
-          type="date"
-          value={selectedDate}
-          onChange={handleDateChange}
-          placeholder="Select a date"
-        />
-      </Box>
-      <Button colorScheme="teal" onClick={handleTodayClick}>
-        Set Today
-      </Button>
-      <Text>Selected Date: {selectedDate || 'None'}</Text>
+      <VStack>
+        <Text fontWeight="bold" fontSize="lg">
+          Date Widget
+        </Text>
+        <FormControl>
+          <Input
+            type="date"
+            value={selectedDate}
+            onChange={handleDateChange}
+            placeholder="Select a date"
+          />
+        </FormControl>
+        <Button colorScheme="green" onClick={handleTodayClick}>
+          Set Today
+        </Button>
+        <Text>Selected Date: {selectedDate || 'None'}</Text>
+      </VStack>
     </Card>
   );
 };

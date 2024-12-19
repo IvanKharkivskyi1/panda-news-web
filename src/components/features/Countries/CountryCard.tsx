@@ -1,5 +1,9 @@
-import { Box, Card, Flex, Heading, Image, Text } from '@chakra-ui/react';
 import React from 'react';
+
+import { Box, Flex, Heading, Image, Text } from '@chakra-ui/react';
+
+import { Card } from '@/ui-components';
+
 import { WeatherInfo } from '@/components';
 
 type CountryCardProps = {
@@ -21,15 +25,7 @@ export const CountryCard: React.FC<CountryCardProps> = ({
   const capitalCity = capital?.[0] || null;
 
   return (
-    <Card
-      p={4}
-      display="grid"
-      gridTemplateRows="auto 1fr auto"
-      borderRadius="$border-radius"
-      border="1px solid $border-color"
-      minHeight="150px"
-      position="relative"
-    >
+    <Card>
       <Box>
         <Heading size="sm" mb={2}>
           {name.common}

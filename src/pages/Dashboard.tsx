@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import {
-  Box,
-  Card,
-  Container,
-  SimpleGrid,
-  Spinner,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Container, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
+
+import { Card } from '@/ui-components';
 
 import {
   ChartByLetter,
@@ -72,7 +67,6 @@ export const Dashboard = () => {
           title="Temperature Distribution"
         />
 
-        {/* Render OpenStreetMap preview */}
         {firstCountry && boundingBox && (
           <Card>
             <Text fontSize="lg" mb={4}>

@@ -1,7 +1,11 @@
-import { Box, Spinner, Text, VStack } from '@chakra-ui/react';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
+
+import axios from 'axios';
+
+import { Spinner, Text, VStack } from '@chakra-ui/react';
+
 import { FOOTBALL_API_KEY, FOOTBALL_URL } from '@/shared';
+import { Card } from '@/ui-components';
 
 if (!FOOTBALL_API_KEY || !FOOTBALL_URL) {
   throw new Error(
@@ -52,12 +56,21 @@ export const FootballMatches = () => {
     fetchMatches();
   }, []);
 
-  if (loading) return <Spinner size="xl" />;
+  if (loading)
+    return (
+      <Spinner
+        thickness="4px"
+        speed="0.65s"
+        emptyColor="green.200"
+        color="green.800"
+        size="xl"
+      />
+    );
 
   return (
     <VStack spacing={4} align="stretch">
       {matches.map(match => (
-        <Box key={match.fixture.id} borderWidth="1px" borderRadius="lg">
+        <Card key={match.fixture.id}>
           <Text fontWeight="bold">
             {match.teams.home.name} vs {match.teams.away.name}
           </Text>
@@ -68,7 +81,7 @@ export const FootballMatches = () => {
               : 'Not available'}
           </Text>
           <Text>Date: {new Date(match.fixture.date).toLocaleString()}</Text>
-        </Box>
+        </Card>
       ))}
     </VStack>
   );

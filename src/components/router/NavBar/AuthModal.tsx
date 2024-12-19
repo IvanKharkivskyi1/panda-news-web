@@ -81,15 +81,13 @@ export const AuthModal: React.FC = () => {
 
   return (
     <>
-      {token ? (
-        <Button colorScheme="green" onClick={handleLogout}>
-          Logout
-        </Button>
-      ) : (
-        <Button colorScheme="green" onClick={onOpen}>
-          Login / Register
-        </Button>
-      )}
+      <Button
+        colorScheme="green"
+        size="md"
+        onClick={token ? handleLogout : onOpen}
+      >
+        {token ? 'Logout' : 'Login/Register'}
+      </Button>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

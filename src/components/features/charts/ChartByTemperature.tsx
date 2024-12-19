@@ -1,8 +1,10 @@
-import { Card } from '@chakra-ui/react';
-import ReactECharts from 'echarts-for-react';
 import { useMemo } from 'react';
 
+import ReactECharts from 'echarts-for-react';
+
 import { useChartTheme } from '@/components';
+
+import { Card } from '@/ui-components';
 
 interface ChartByTemperatureProps {
   filteredCountries: Array<{
