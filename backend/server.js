@@ -10,7 +10,6 @@ const buildPath = path.join(__dirname, '../build');
 // Serve static files
 app.use(express.static(buildPath));
 
-// Handle SPA routing
 app.get('*', (req, res) => {
   res.sendFile(path.join(buildPath, 'index.html'));
 });
